@@ -270,6 +270,14 @@ function SetupTable.NameplateAuras(import, addon)
 		SetupComplete(addon)
 
 		NameplateAurasAceDB.profiles[Profile] = NUI.NameplateAurasData
+
+		for _, v in ipairs(NameplateAurasAceDB.profiles[Profile].CustomSpells2) do
+			local spellNamenew = C_Spell.GetSpellName(next(v.checkSpellID))
+
+			if spellNamenew ~= v.spellName then
+				v.spellName = spellNamenew
+			end
+		end
 	end
 
 	if not IsProfileExisting(NameplateAurasAceDB) then
